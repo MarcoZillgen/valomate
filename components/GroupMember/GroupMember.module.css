@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+  width: 460px;
+  height: 146px;
+  background: linear-gradient(90deg,
+      hsla(50, 70%, 44%, 50%) 0%,
+      hsla(210, 42%, 9%, 0%) 100%)
+}
+
+.leftRect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #BFA622;
+}
+
+.topContainer {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+
+.avatar{
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.banner {
+  position: absolute;
+  top: 0;
+  left: 110px;
+  width: 350px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+}
