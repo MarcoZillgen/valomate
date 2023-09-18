@@ -1,15 +1,11 @@
-// app/stats?username={username}&tag={tag}
-
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import GroupMember from "@/components/GroupMember/GroupMember";
 
 export default () => {
-  const searchParams = useSearchParams();
-  const username = searchParams.get("username") as string;
-  const tag = searchParams.get("tag") as string;
+  const username = localStorage.getItem("username") as string;
+  const tag = localStorage.getItem("tag") as string;
 
   const [data, setData] = useState(null) as any;
   const [loading, setLoading] = useState(true);

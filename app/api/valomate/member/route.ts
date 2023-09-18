@@ -1,3 +1,5 @@
+// api/valomate/member
+
 import { MongoClient } from 'mongodb';
 
 export const GET = async (req: Request, res: Response) => {
