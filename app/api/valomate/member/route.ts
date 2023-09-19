@@ -1,42 +1,41 @@
 // api/valomate/member
 
-import { MongoClient } from 'mongodb';
+import { MongoClient } from 'mongodb'
 
+// get all members from mongoDB
 export const GET = async (req: Request, res: Response) => {
-    const uri = `mongodb+srv://marcosimonzillgen:${process.env.MONGO_DB_KEY}@cluster.kkbv0qr.mongodb.net`;
-    const client = new MongoClient(uri);
+  // connect to mongoDB
+  const uri = MONGO_DB_URI
+  const client = new MongoClient(uri)
+  try {
+    await client.connect()
+    const database = client.db('ValoMate')
+    const collection = database.collection('Users')
+    // get all
+    const users = await collection.find().toArray()
+    return new Response(JSON.stringify(users), { status: 200 })
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error }), { status: 500 })
+  } finally {
+    await client.close()
+  }
+}
 
-    try {
-        await client.connect();
-        const database = client.db("ValoMate");
-        const collection = database.collection("Users");
-        // get all
-        const users = await collection.find().toArray();
-        console.log(users);
-
-        return new Response(JSON.stringify(users), { status: 200 });
-    } catch (error) {
-        return new Response(JSON.stringify({ error: error }), { status: 500 });
-    }
-    finally {
-        await client.close();
-    }
-};
-
+// add new member
 export const POST = async (req: Request, res: Response) => {
-    const uri = `mongodb+srv://marcosimonzillgen:${process.env.MONGO_DB_KEY}@cluster.kkbv0qr.mongodb.net`;
-    const client = new MongoClient(uri);
-
-    try {
-        await client.connect();
-        const database = client.db("ValoMate");
-        const collection = database.collection("Users");
-        const user = await collection.insertOne(await req.json());
-        return new Response(JSON.stringify(user), { status: 200 });
-    } catch (error) {
-        return new Response(JSON.stringify({ error: error }), { status: 500 });
-    }
-    finally {
-        await client.close();
-    }
+  // connect to mongoDB
+  const uri = MONGO_DB_URI
+  const client = new MongoClient(uri)
+  try {
+    await client.connect()
+    const database = client.db('ValoMate')
+    const collection = database.collection('Users')
+    // insert the user by body
+    const user = await collection.insertOne(await req.json())
+    return new Response(JSON.stringify(user), { status: 200 })
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error }), { status: 500 })
+  } finally {
+    await client.close()
+  }
 }
