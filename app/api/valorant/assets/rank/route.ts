@@ -1,13 +1,10 @@
-// api/valorant/assets/agent/[agentUuid]
+// api/valorant/assets/rank
 
-// get data from one agent
+// get all rank data
 export const GET = async (req: Request, res: Response) => {
-  // get data from url
-  const agentUuid = req.url.split('/')[7]
-
   // connect to api
   const data: any = await fetch(
-    `https://valorant-api.com/v1/agents/${agentUuid}`
+    'https://valorant-api.com/v1/competitivetiers'
   ).then(res => res.json())
 
   return new Response(JSON.stringify(data.data), {
