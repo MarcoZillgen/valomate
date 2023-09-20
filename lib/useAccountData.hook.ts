@@ -14,11 +14,13 @@ export default function useAccountData (): useAccountDataProps {
   const [username, setUsername] = useState('')
   const [tag, setTag] = useState('')
 
+  // states -> localStorage
   useEffect(() => {
     setUsername(localStorage.getItem('username') || '')
     setTag(localStorage.getItem('tag') || '')
   }, [])
 
+  // logout -> clear localStorage & states 
   const logout = () => {
     setUsername('')
     setTag('')
@@ -26,6 +28,7 @@ export default function useAccountData (): useAccountDataProps {
     localStorage.removeItem('tag')
   }
 
+  // login -> add localStorage & states
   const login = (username: string, tag: string) => {
     setUsername(username)
     setTag(tag)
