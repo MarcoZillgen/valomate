@@ -1,6 +1,6 @@
 // api/valomate/groups/[MemberId]
 
-import { getGroupByMemberId, MemberId, removeGroup } from "../../../../../lib/groups"
+import { getGroupByMemberId, MemberId, removeGroup } from "@/lib/groups"
 
 export const GET = (req: Request, res: Response) => {
     const memberId: MemberId = req.url.split("/")[6]

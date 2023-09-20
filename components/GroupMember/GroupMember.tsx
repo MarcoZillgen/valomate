@@ -1,6 +1,7 @@
 import GroupMember from "./GroupMember.module.css";
+import Image from "next/image";
 
-type InputObject = {
+type GroupMemberComponentProps = {
   username: string;
   tag: string;
   leader: boolean;
@@ -9,31 +10,33 @@ type InputObject = {
   rank: string;
 };
 
-export default ({
+export default function GroupMemberComponent({
   username,
   tag,
   leader,
   avatar,
   banner,
   rank,
-}: InputObject) => {
+}: GroupMemberComponentProps) {
   return (
     <div className={GroupMember.container}>
       <div className={GroupMember.leftRect}></div>
       <div className={GroupMember.topContainer}>
         {/* <img className="avatar" src="https://via.placeholder.com/150" /> */}
-        <img className={GroupMember.banner} src={banner} />
+        <Image
+          className={GroupMember.banner}
+          src={banner}
+          width={150}
+          height={150}
+          alt=""
+        />
         {/* <img className="rank" src="https://via.placeholder.com/150" /> */}
       </div>
       <div className="bottomContainer">
         <span className="username">{username}</span>
         <span className="tag">#{tag}</span>
-        {leader ? (
-          <img className="leader" src="../../public/crown.png" />
-        ) : (
-          <></>
-        )}
+        {leader && <Image src="/crown.png" width={20} height={20} alt="" />}
       </div>
     </div>
   );
-};
+}

@@ -1,6 +1,6 @@
 // api/valomate/groups
 
-import { getGroups, Group, updateGroup, addGroup } from "../../../../lib/groups"
+import { getGroups, Group, updateGroup, addGroup } from "@/lib/groups"
 
 export const GET = (req: Request, res: Response) => {
     const groups: Group[] = getGroups()

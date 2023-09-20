@@ -1,6 +1,6 @@
 // api/valomate/groups/migrate
 
-import { MemberId, groupMigration } from "../../../../../lib/groups"
+import { MemberId, groupMigration } from "@/lib/groups"
 
 export const POST = async (req: Request, res: Response) => {
     const body: { parentId: MemberId, childId: MemberId } = await req.json();

@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from "react";
 import GroupMember from "@/components/GroupMember/GroupMember";
+import useAccountData from "@/lib/useAccountData.hook";
 
-export default () => {
-  const username = localStorage.getItem("username") as string;
-  const tag = localStorage.getItem("tag") as string;
-
+export default function MatePage() {
   const [data, setData] = useState(null) as any;
   const [loading, setLoading] = useState(true);
+  const [[username, setUsername], [tag, setTag]] = useAccountData();
 
   useEffect(() => {
     if (username && tag) {
@@ -40,4 +39,4 @@ export default () => {
       />
     </div>
   );
-};
+}
