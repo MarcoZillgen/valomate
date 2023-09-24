@@ -25,7 +25,7 @@ export default function AccountPage () {
           </button>
           <button
             onClick={() => {
-              window.location.href = 'http://localhost:3000/mate'
+              window.location.pathname = '/mate'
             }}
           >
             Mate
